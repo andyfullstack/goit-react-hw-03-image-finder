@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Searchbar from '../SearchBar/SearchBar';
 import imgFinder from '../../api/imgFinder.js';
 import ImgGallery from '../ImgGallery/ImgGallery.jsx';
-import ImgGalleryItem from '../ImgGalleryItem/ImgGalleryItem.jsx';
+// import ImgGalleryItem from '../ImgGalleryItem/ImgGalleryItem.jsx';
 import Loader from '../Loader/Loader.jsx';
 import Button from '../Button/Button.jsx';
 import Modal from '../Modal/Modal.jsx';
@@ -39,10 +39,7 @@ class App extends Component {
         largeImageURL,
       }));
       this.setState(prevState => ({
-        images:
-          prevState.query !== this.state.query
-            ? [...hits]
-            : [...prevState.images, ...hits],
+        images: [...prevState.images, ...hits],
         loadMore: this.state.page < Math.ceil(totalHits / 12),
       }));
     } catch (err) {
@@ -52,8 +49,7 @@ class App extends Component {
     }
   };
 
-  handleFormSubmit = inputValue => {
-    const { query } = inputValue;
+  handleFormSubmit = ({ query }) => {
     this.setState({
       query,
       page: 1,
@@ -75,25 +71,17 @@ class App extends Component {
   };
 
   render() {
-    const { images, isLoading, showModal, selectedImage, loadMore } =
-      this.state;
+    const { isLoading, showModal, selectedImage, loadMore } = this.state;
     return (
       <StyledApp>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImgGallery>
-          {isLoading && <Loader />}
-          {images &&
-            images.map(image => (
-              <ImgGalleryItem
-                imageData={image}
-                onShowModal={() => this.handleModal(image)}
-              />
-            ))}
-          {showModal && (
-            <Modal imageData={selectedImage} onHideModal={this.handleModal} />
-          )}
-          {loadMore && <Button loadMore={this.handleLoadMore} />}
-        </ImgGallery>
+        <ImgGallery images={this.state.images} handleModal={this.handleModal} />
+
+        {isLoading && <Loader />}
+        {showModal && (
+          <Modal imageData={selectedImage} onHideModal={this.handleModal} />
+        )}
+        {loadMore && <Button loadMore={this.handleLoadMore} />}
       </StyledApp>
     );
   }
