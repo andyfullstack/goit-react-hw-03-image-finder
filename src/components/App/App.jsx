@@ -74,12 +74,12 @@ class App extends Component {
     return (
       <StyledApp>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImgGallery images={this.state.images} handleModal={this.handleModal} />
 
+        <ImgGallery images={this.state.images} handleModal={this.handleModal} />
         {showModal && (
           <Modal imageData={selectedImage} onHideModal={this.handleModal} />
         )}
-        {isLoading && <Loader style={{ margin: 'auto' }} />}
+        {isLoading && <Loader />}
         {loadMore && <Button loadMore={this.handleLoadMore} />}
       </StyledApp>
     );
