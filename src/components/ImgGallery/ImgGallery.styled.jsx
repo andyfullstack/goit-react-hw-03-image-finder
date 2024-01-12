@@ -5,7 +5,6 @@ const ImgGalleryList = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  width: 100%;
   margin: 0 auto;
   padding: 0 10px 0 10px;
   list-style: none;

@@ -79,7 +79,7 @@ class App extends Component {
         {showModal && (
           <Modal imageData={selectedImage} onHideModal={this.handleModal} />
         )}
-        {isLoading && <Loader />}
+        {isLoading && <Loader style={{ margin: 'auto' }} />}
         {loadMore && <Button loadMore={this.handleLoadMore} />}
       </StyledApp>
     );
