@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { FaSearchDollar } from 'react-icons/fa';
 
-// GiBarbedStar
-
 const SearchbarHeader = styled.header`
   top: 0;
   left: 0;
@@ -62,6 +60,7 @@ const SearchInput = styled.input`
   width: 100%;
   font: inherit;
   font-size: 20px;
+  text-align: left;
   border: none;
   outline: none;
   padding-left: 4px;
@@ -70,6 +69,7 @@ const SearchInput = styled.input`
   &::placeholder {
     font: inherit;
     font-size: 18px;
+    text-align: center;
   }
 `;
 export {

@@ -2,7 +2,6 @@ import { Component } from 'react';
 import Searchbar from '../SearchBar/SearchBar';
 import imgFinder from '../../api/imgFinder.js';
 import ImgGallery from '../ImgGallery/ImgGallery.jsx';
-// import ImgGalleryItem from '../ImgGalleryItem/ImgGalleryItem.jsx';
 import Loader from '../Loader/Loader.jsx';
 import Button from '../Button/Button.jsx';
 import Modal from '../Modal/Modal.jsx';
@@ -77,10 +76,10 @@ class App extends Component {
         <Searchbar onSubmit={this.handleFormSubmit} />
         <ImgGallery images={this.state.images} handleModal={this.handleModal} />
 
-        {isLoading && <Loader />}
         {showModal && (
           <Modal imageData={selectedImage} onHideModal={this.handleModal} />
         )}
+        {isLoading && <Loader />}
         {loadMore && <Button loadMore={this.handleLoadMore} />}
       </StyledApp>
     );

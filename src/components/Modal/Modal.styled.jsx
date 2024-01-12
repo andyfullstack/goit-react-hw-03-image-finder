@@ -23,8 +23,9 @@ const ModalDiv = styled.div`
 const ModalImg = styled.img`
   display: block;
   width: 1200px;
-  height: 800px;
-  /* max-width: 100%; */
+  height: 700px;
+  /* max-width: 100%;
+  max-height: 100%; */
 `;
 
 export { Overlay, ModalDiv, ModalImg };
